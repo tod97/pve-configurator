@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import styles from '../../styles/styles.module.scss';
 import { Form } from '@unform/web';
 import Input from '../Input Fields/Input';
 import { useFormData } from '../../context';
@@ -38,11 +37,11 @@ export default function EquipmentInfo({ formStep, nextFormStep }) {
   }
 
   return (
-    <div className={formStep === 3 ? styles.showForm : styles.hideForm}>
+    <div className={formStep === 3 ? '' : 'hidden'}>
       <h2>Equipment Info</h2>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <div className={styles.formRow}>
+        <div>
           <Input name="equip" label="Address" type="text" />
         </div>
         <button type="submit">Next</button>

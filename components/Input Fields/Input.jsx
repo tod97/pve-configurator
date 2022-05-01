@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
-import styles from '../../styles/styles.module.scss';
-
 const Input = ({ name, label, ...rest }) => {
   const inputRef = useRef();
 
@@ -22,7 +20,7 @@ const Input = ({ name, label, ...rest }) => {
       <label htmlFor={fieldName}>{label}</label>
       <input id={fieldName} ref={inputRef} defaultValue={defaultValue} {...rest} />
 
-      {error && <p className={styles.errorText}>{error}</p>}
+      {error && <p>{error}</p>}
     </>
   );
 };

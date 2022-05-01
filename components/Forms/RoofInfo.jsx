@@ -1,12 +1,11 @@
 import { useRef } from 'react';
-import styles from '../../styles/styles.module.scss';
 import { Form } from '@unform/web';
 import Input from '../Input Fields/Input';
 import { useFormData } from '../../context';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  address: yup.string().min(2, 'Address is too short').required('Address is required'),
+  roof: yup.string().min(2, 'Roof is too short').required('Roof is required'),
 });
 
 export default function RoofInfo({ formStep, nextFormStep }) {
@@ -38,12 +37,12 @@ export default function RoofInfo({ formStep, nextFormStep }) {
   }
 
   return (
-    <div className={formStep === 1 ? styles.showForm : styles.hideForm}>
+    <div className={formStep === 1 ? '' : 'hidden'}>
       <h2>Roof Info</h2>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <div className={styles.formRow}>
-          <Input name="address" label="Address" type="address" />
+        <div>
+          <Input name="roof" label="Roof" type="roof" />
         </div>
         <button type="submit">Next</button>
       </Form>

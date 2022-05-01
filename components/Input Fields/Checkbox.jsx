@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { useField } from '@unform/core';
-import styles from '../../styles/styles.module.scss';
-
 export default function Checkbox({ name, value, label, ...rest }) {
   const inputRef = useRef();
   const { fieldName, defaultValue, registerField, error } = useField(name);
@@ -31,7 +29,7 @@ export default function Checkbox({ name, value, label, ...rest }) {
         {label}
       </label>
 
-      {error && <p className={styles.errorText}>{error}</p>}
+      {error && <p>{error}</p>}
     </div>
   );
 }

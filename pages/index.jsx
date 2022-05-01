@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Head from 'next/head';
 
-import styles from '../styles/styles.module.scss';
 import FormCard from '../components/FormCard';
 import { EquipmentInfo, RoofInfo, SystemInfo, PersonalInfo } from '../components/Forms';
 import FormCompleted from '../components/FormCompleted';
@@ -15,7 +14,7 @@ const App = () => {
 
   return (
     <>
-      <div className={`${styles.container}`}>
+      <div className="p-8">
         <Head>
           <title>Uniform Multi Step Form</title>
         </Head>

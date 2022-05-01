@@ -1,12 +1,10 @@
-import styles from '../styles/styles.module.scss';
-
 export default function FormCard({ children, currentStep, prevFormStep }) {
   return (
     <div className="max-w-4xl m-auto">
       {currentStep < 4 && (
         <>
           {currentStep > 0 && (
-            <button className={styles.back} onClick={prevFormStep} type="button">
+            <button onClick={prevFormStep} type="button">
               back
             </button>
           )}

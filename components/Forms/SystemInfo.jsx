@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import styles from '../../styles/styles.module.scss';
 import { Form } from '@unform/web';
 import CheckBox from '../Input Fields/CheckBox';
 import { useFormData } from '../../context';
@@ -38,11 +37,11 @@ export default function SystemInfo({ formStep, nextFormStep }) {
   }
 
   return (
-    <div className={formStep === 2 ? styles.showForm : styles.hideForm}>
+    <div className={formStep === 2 ? '' : 'hidden'}>
       <h2>Confirm Purchase</h2>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
-        <div className={styles.formRow}>
+        <div>
           <CheckBox name="checkbox" label="Ready to go?" />
         </div>
 
