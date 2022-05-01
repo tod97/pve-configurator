@@ -1,33 +1,50 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Head from 'next/head';
 
 import styles from '../styles/styles.module.scss';
 import FormCard from '../components/FormCard';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
 import { BillingInfo, ConfirmPurchase, PersonalInfo } from '../components/Forms';
 import FormCompleted from '../components/FormCompleted';
 
 const App = () => {
   const [formStep, setFormStep] = useState(0);
+  const [sidebar, setSidebar] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024) setSidebar(false);
+    });
+  });
 
   const nextFormStep = () => setFormStep((currentStep) => currentStep + 1);
 
   const prevFormStep = () => setFormStep((currentStep) => currentStep - 1);
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Unform Multi Step Form</title>
-      </Head>
-      <h1>Unform Multi Step Form</h1>
+    <>
+      <Navbar sidebar={sidebar} setSidebar={setSidebar} />
 
-      <FormCard currentStep={formStep} prevFormStep={prevFormStep}>
-        {formStep >= 0 && <PersonalInfo formStep={formStep} nextFormStep={nextFormStep} />}
-        {formStep >= 1 && <BillingInfo formStep={formStep} nextFormStep={nextFormStep} />}
-        {formStep >= 2 && <ConfirmPurchase formStep={formStep} nextFormStep={nextFormStep} />}
+      <div className={`sidebar`}>
+        <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
+      </div>
 
-        {formStep > 2 && <FormCompleted />}
-      </FormCard>
-    </div>
+      <div className={styles.container}>
+        <Head>
+          <title>Uniform Multi Step Form</title>
+        </Head>
+        <h1>Uniform Multi Step Form</h1>
+
+        <FormCard currentStep={formStep} prevFormStep={prevFormStep}>
+          {formStep >= 0 && <PersonalInfo formStep={formStep} nextFormStep={nextFormStep} />}
+          {formStep >= 1 && <BillingInfo formStep={formStep} nextFormStep={nextFormStep} />}
+          {formStep >= 2 && <ConfirmPurchase formStep={formStep} nextFormStep={nextFormStep} />}
+
+          {formStep > 2 && <FormCompleted />}
+        </FormCard>
+      </div>
+    </>
   );
 };
 
