@@ -39,12 +39,12 @@ const Sidebar = ({ sidebar, setSidebar }) => {
         id="mobile-nav"
       >
         <nav className="lg:uppercase lg:text-white lg:tracking-wide lg:font-bold lg:text-xs lg:space-x-4 lg:flex">
-          <a href="/news" className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-cyan-400 hover:border-current">
-            About
+          <a href="/catalogs" className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-cyan-400 hover:border-current">
+            Cataloghi
           </a>
 
-          <a href="/products" className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-cyan-400 hover:border-current">
-            Cataloghi
+          <a href="/about" className="block h-16 leading-[4rem] border-b-4 border-transparent hover:text-cyan-400 hover:border-current">
+            About
           </a>
         </nav>
       </div>

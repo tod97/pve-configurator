@@ -1,22 +1,13 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import Head from 'next/head';
 
 import styles from '../styles/styles.module.scss';
 import FormCard from '../components/FormCard';
-import Navbar from '../components/Navbar';
-import Sidebar from '../components/Sidebar';
 import { BillingInfo, ConfirmPurchase, PersonalInfo } from '../components/Forms';
 import FormCompleted from '../components/FormCompleted';
 
 const App = () => {
   const [formStep, setFormStep] = useState(0);
-  const [sidebar, setSidebar] = useState(false);
-
-  useEffect(() => {
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 1024) setSidebar(false);
-    });
-  });
 
   const nextFormStep = () => setFormStep((currentStep) => currentStep + 1);
 
@@ -24,13 +15,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar sidebar={sidebar} setSidebar={setSidebar} />
-
-      <div className={`sidebar`}>
-        <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
-      </div>
-
-      <div className={styles.container}>
+      <div className={`${styles.container} max-w-full`}>
         <Head>
           <title>Uniform Multi Step Form</title>
         </Head>
