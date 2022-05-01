@@ -5,7 +5,7 @@ export default function FormCompleted() {
 
   return (
     <>
-      <h2>Thank you for your purchase! 🎉</h2>
+      <h2>Completed</h2>
 
       <pre>{JSON.stringify(data)}</pre>
     </>

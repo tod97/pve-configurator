@@ -1,15 +1,15 @@
 import { useRef } from 'react';
 import styles from '../../styles/styles.module.scss';
 import { Form } from '@unform/web';
-import CheckBox from '../Input Fields/CheckBox';
+import Input from '../Input Fields/Input';
 import { useFormData } from '../../context';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  checkbox: yup.bool().oneOf([true], 'Checkbox is required'),
+  equip: yup.string().min(2, 'Equip is too short').required('Address is required'),
 });
 
-export default function ConfirmPurchase({ formStep, nextFormStep }) {
+export default function EquipmentInfo({ formStep, nextFormStep }) {
   const { setFormValues } = useFormData();
   const formRef = useRef();
 
@@ -38,15 +38,14 @@ export default function ConfirmPurchase({ formStep, nextFormStep }) {
   }
 
   return (
-    <div className={formStep === 2 ? styles.showForm : styles.hideForm}>
-      <h2>Confirm Purchase</h2>
+    <div className={formStep === 3 ? styles.showForm : styles.hideForm}>
+      <h2>Equipment Info</h2>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
         <div className={styles.formRow}>
-          <CheckBox name="checkbox" label="Ready to go?" />
+          <Input name="equip" label="Address" type="text" />
         </div>
-
-        <button type="submit">Confirm purchase</button>
+        <button type="submit">Next</button>
       </Form>
     </div>
   );

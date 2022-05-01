@@ -9,7 +9,7 @@ const schema = yup.object().shape({
   address: yup.string().min(2, 'Address is too short').required('Address is required'),
 });
 
-export default function BillingInfo({ formStep, nextFormStep }) {
+export default function RoofInfo({ formStep, nextFormStep }) {
   const { setFormValues } = useFormData();
   const formRef = useRef();
 
@@ -39,7 +39,7 @@ export default function BillingInfo({ formStep, nextFormStep }) {
 
   return (
     <div className={formStep === 1 ? styles.showForm : styles.hideForm}>
-      <h2>Billing Info</h2>
+      <h2>Roof Info</h2>
 
       <Form ref={formRef} onSubmit={handleSubmit}>
         <div className={styles.formRow}>

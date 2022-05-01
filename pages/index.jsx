@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import styles from '../styles/styles.module.scss';
 import FormCard from '../components/FormCard';
-import { BillingInfo, ConfirmPurchase, PersonalInfo } from '../components/Forms';
+import { EquipmentInfo, RoofInfo, SystemInfo, PersonalInfo } from '../components/Forms';
 import FormCompleted from '../components/FormCompleted';
 
 const App = () => {
@@ -15,18 +15,18 @@ const App = () => {
 
   return (
     <>
-      <div className={`${styles.container} max-w-full`}>
+      <div className={`${styles.container}`}>
         <Head>
           <title>Uniform Multi Step Form</title>
         </Head>
-        <h1>Uniform Multi Step Form</h1>
 
         <FormCard currentStep={formStep} prevFormStep={prevFormStep}>
           {formStep >= 0 && <PersonalInfo formStep={formStep} nextFormStep={nextFormStep} />}
-          {formStep >= 1 && <BillingInfo formStep={formStep} nextFormStep={nextFormStep} />}
-          {formStep >= 2 && <ConfirmPurchase formStep={formStep} nextFormStep={nextFormStep} />}
+          {formStep >= 1 && <RoofInfo formStep={formStep} nextFormStep={nextFormStep} />}
+          {formStep >= 2 && <SystemInfo formStep={formStep} nextFormStep={nextFormStep} />}
+          {formStep >= 3 && <EquipmentInfo formStep={formStep} nextFormStep={nextFormStep} />}
 
-          {formStep > 2 && <FormCompleted />}
+          {formStep > 3 && <FormCompleted />}
         </FormCard>
       </div>
     </>

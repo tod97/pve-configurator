@@ -1,5 +1,6 @@
-import BillingInfo from './BillingInfo';
-import ConfirmPurchase from './ConfirmPurchase';
+import RoofInfo from './RoofInfo';
+import SystemInfo from './SystemInfo';
 import PersonalInfo from './PersonalInfo';
+import EquipmentInfo from './EquipmentInfo';
 
-export { BillingInfo, ConfirmPurchase, PersonalInfo };
+export { EquipmentInfo, RoofInfo, SystemInfo, PersonalInfo };

@@ -2,8 +2,8 @@ import styles from '../styles/styles.module.scss';
 
 export default function FormCard({ children, currentStep, prevFormStep }) {
   return (
-    <div className={styles.formCard}>
-      {currentStep < 3 && (
+    <div className="max-w-4xl m-auto">
+      {currentStep < 4 && (
         <>
           {currentStep > 0 && (
             <button className={styles.back} onClick={prevFormStep} type="button">
@@ -11,7 +11,22 @@ export default function FormCard({ children, currentStep, prevFormStep }) {
             </button>
           )}
 
-          <span className={styles.steps}>Step {currentStep + 1} of 3</span>
+          <div className="relative w-full flex justify-around mb-8">
+            <div className="absolute bg-cyan-400 h-1 top-1/2 w-3/4 z-0"></div>
+            {Array(4)
+              .fill()
+              .map((_, i) => {
+                return (
+                  <div
+                    key={i}
+                    className={`border-4 border-cyan-400 rounded-full h-12 w-12 flex justify-center items-center z-10 
+                      ${currentStep > i ? 'bg-cyan-400' : 'bg-white'}`}
+                  >
+                    {i + 1}
+                  </div>
+                );
+              })}
+          </div>
         </>
       )}
       {children}
