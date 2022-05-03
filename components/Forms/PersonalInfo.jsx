@@ -37,7 +37,9 @@ export default function PersonalInfo({ formStep, nextFormStep }) {
     return (
       <div className="text-center p-3">
         <p className="text-3xl mb-3">{value} €</p>
-        <p>82 kWh - 108 kWh</p>
+        <p>
+          {Math.round(value / 0.26936)} kWh - {Math.round(value / 0.17)} kWh
+        </p>
       </div>
     );
   }
@@ -46,7 +48,7 @@ export default function PersonalInfo({ formStep, nextFormStep }) {
     const searchTxt = e.target.value;
     if (searchTxt && searchTxt.trim().length > 0) {
       setIsLoadingAddresses(true);
-      fetch(encodeURI(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&q=${searchTxt}`))
+      fetch(encodeURI(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&countrycodes=IT&q=${searchTxt}`))
         .then((res) => res.json())
         .then((data) => {
           setAddresses(

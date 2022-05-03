@@ -10,7 +10,7 @@ const App = () => {
 
   const nextFormStep = () => setFormStep((currentStep) => currentStep + 1);
 
-  const prevFormStep = () => setFormStep((currentStep) => currentStep - 1);
+  const goToStep = (step) => setFormStep(step);
 
   return (
     <>
@@ -19,7 +19,7 @@ const App = () => {
           <title>Uniform Multi Step Form</title>
         </Head>
 
-        <FormCard currentStep={formStep} prevFormStep={prevFormStep}>
+        <FormCard currentStep={formStep} goToStep={goToStep}>
           {formStep >= 0 && <PersonalInfo formStep={formStep} nextFormStep={nextFormStep} />}
           {formStep >= 1 && <RoofInfo formStep={formStep} nextFormStep={nextFormStep} />}
           {formStep >= 2 && <SystemInfo formStep={formStep} nextFormStep={nextFormStep} />}
