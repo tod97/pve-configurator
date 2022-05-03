@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.MuiSlider-valueLabel {
+  z-index: 100;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px black;
+  color: black;
+}
