@@ -30,8 +30,8 @@ export default function PersonalInfo({ formStep, nextFormStep }) {
   const { setFormValues } = useFormData();
   const formRef = useRef();
 
-  const [address, setAddress] = useState([]);
-  const [consumption, setConsumption] = useState([]);
+  const [address, setAddress] = useState('');
+  const [consumption, setConsumption] = useState(20);
 
   function valuetext(value) {
     return (
