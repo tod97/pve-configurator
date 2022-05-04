@@ -92,8 +92,8 @@ export default function PersonalInfo({ formStep, nextFormStep }) {
 
   return (
     <div className={formStep === 0 ? '' : 'hidden'}>
-      <Form className="flex flex-col justify-center" ref={formRef} onSubmit={handleSubmit}>
-        <div className="w-3/4 m-auto py-3 mt-32 mb-40">
+      <Form className="flex flex-col justify-center lg:w-1/2 m-auto" ref={formRef} onSubmit={handleSubmit}>
+        <div className="w-3/4 m-auto py-3 mt-20 mb-40">
           <Input id="address" value={address} name="address" type="hidden" />
           <Autocomplete
             onChange={(e) => setAddress(e.target.textContent)}

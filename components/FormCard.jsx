@@ -3,7 +3,7 @@ export default function FormCard({ children, currentStep, goToStep }) {
     <div className="max-w-4xl m-auto">
       {currentStep < 4 && (
         <>
-          <div className="relative w-full flex justify-around mb-8">
+          <div className="relative w-full flex justify-around p-8 mb-8">
             <div className="absolute bg-cyan-400 h-1 top-1/2 w-3/4 z-0"></div>
             {Array(4)
               .fill()

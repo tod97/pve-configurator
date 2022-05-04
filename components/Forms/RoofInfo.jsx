@@ -95,8 +95,8 @@ export default function RoofInfo({ formStep, nextFormStep }) {
 
   return (
     <div className={formStep === 1 ? '' : 'hidden'}>
-      <Form className="flex flex-col justify-center" ref={formRef} onSubmit={handleSubmit}>
-        <div className="w-3/4 m-auto py-3 mt-32 mb-20">
+      <Form className="flex flex-col justify-center lg:w-1/2 m-auto" ref={formRef} onSubmit={handleSubmit}>
+        <div className="w-3/4 m-auto py-3 mt-20 mb-20">
           <Input id="roofSize" value={roofSize} name="roofSize" type="hidden" />
           <TextField
             type={'number'}
@@ -127,7 +127,7 @@ export default function RoofInfo({ formStep, nextFormStep }) {
           })}
         </div>
 
-        <div className="w-3/4 m-auto">
+        <div className="m-auto">
           {roofObstacoles.map((obstacole, i) => {
             return (
               <div key={obstacole.label} className="flex items-center justify-between my-8">

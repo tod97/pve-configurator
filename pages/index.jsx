@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 
 import FormCard from '../components/FormCard';
-import { EquipmentInfo, RoofInfo, SystemInfo, PersonalInfo } from '../components/Forms';
+import { RoofInfo, SystemInfo, PersonalInfo } from '../components/Forms';
 import FormCompleted from '../components/FormCompleted';
 
 const App = () => {
@@ -14,20 +14,17 @@ const App = () => {
 
   return (
     <>
-      <div className="p-8">
-        <Head>
-          <title>Uniform Multi Step Form</title>
-        </Head>
+      <Head>
+        <title>Pve Configurator</title>
+      </Head>
 
-        <FormCard currentStep={formStep} goToStep={goToStep}>
-          {formStep >= 0 && <PersonalInfo formStep={formStep} nextFormStep={nextFormStep} />}
-          {formStep >= 1 && <RoofInfo formStep={formStep} nextFormStep={nextFormStep} />}
-          {formStep >= 2 && <SystemInfo formStep={formStep} nextFormStep={nextFormStep} />}
-          {formStep >= 3 && <EquipmentInfo formStep={formStep} nextFormStep={nextFormStep} />}
+      <FormCard currentStep={formStep} goToStep={goToStep}>
+        {formStep >= 0 && <PersonalInfo formStep={formStep} nextFormStep={nextFormStep} />}
+        {formStep >= 1 && <RoofInfo formStep={formStep} nextFormStep={nextFormStep} />}
+        {formStep >= 2 && <SystemInfo formStep={formStep} nextFormStep={nextFormStep} />}
 
-          {formStep > 3 && <FormCompleted />}
-        </FormCard>
-      </div>
+        {formStep > 2 && <FormCompleted />}
+      </FormCard>
     </>
   );
 };
