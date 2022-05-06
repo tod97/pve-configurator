@@ -18,39 +18,34 @@ export default function RoofInfo({ formStep, nextFormStep }) {
     {
       label: 'A Capanna',
       url: 'https://picsum.photos/200/300',
-      value: 1,
+      value: 30,
     },
     {
       label: 'A Padiglione',
       url: 'https://picsum.photos/201/300',
-      value: 2,
+      value: 28,
     },
     {
       label: 'Spiovente',
       url: 'https://picsum.photos/202/300',
-      value: 3,
+      value: 17,
     },
     {
       label: 'Piano',
       url: 'https://picsum.photos/203/300',
-      value: 4,
+      value: 0,
     },
   ];
 
   const [roofObstacoles, setRoofObstacoles] = useState([
     {
       label: 'Camino',
-      value: 1,
+      value: 2.5,
       count: 0,
     },
     {
       label: 'Finestre',
-      value: 2,
-      count: 0,
-    },
-    {
-      label: "Pannelli d'acqua calda",
-      value: 3,
+      value: 5,
       count: 0,
     },
     {

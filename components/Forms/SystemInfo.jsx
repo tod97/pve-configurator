@@ -13,11 +13,6 @@ export default function SystemInfo({ formStep, nextFormStep }) {
   const formRef = useRef();
   const system_types = [
     {
-      label: 'Fotovoltaico inverter',
-      url: 'https://picsum.photos/400/300',
-      value: 1,
-    },
-    {
       label: 'Fotovoltaico accumulo',
       url: 'https://picsum.photos/401/300',
       value: 2,
@@ -28,104 +23,66 @@ export default function SystemInfo({ formStep, nextFormStep }) {
       value: 3,
     },
   ];
+  const pv_types = [
+    {
+      label: 'Sunpower',
+      value: 1,
+      efficiency: 0.22,
+      area: 2,
+      time_deg: 0.008,
+      price: 350,
+    },
+    {
+      label: 'Solaria',
+      value: 2,
+      efficiency: 0.202,
+      area: 2,
+      time_deg: 0.01,
+      price: 300,
+    },
+    {
+      label: 'Jinko Solar',
+      value: 3,
+      efficiency: 0.21,
+      area: 1.95,
+      time_deg: 0.0055,
+      price: 450,
+    },
+  ];
   const inverter_types = [
     {
-      label: 'Inverter 1',
+      label: 'Piko IQ',
       value: 1,
-      price: 300,
-    },
-    {
-      label: 'Inverter 2',
-      value: 2,
-      price: 700,
-    },
-    {
-      label: 'Inverter 3',
-      value: 3,
-      price: 100,
-    },
-    {
-      label: 'Inverter 1',
-      value: 4,
-      price: 300,
-    },
-    {
-      label: 'Inverter 2',
-      value: 5,
-      price: 700,
-    },
-    {
-      label: 'Inverter 3',
-      value: 6,
-      price: 100,
+      peak: 7,
+      charge_reg: 0,
+      price: 1000,
     },
   ];
   const battery_types = [
     {
-      label: 'Accumulo 1',
+      label: 'Tesla Powerwall',
       value: 1,
-      price: 300,
-    },
-    {
-      label: 'Accumulo 2',
-      value: 2,
-      price: 700,
-    },
-    {
-      label: 'Accumulo 3',
-      value: 3,
-      price: 100,
-    },
-    {
-      label: 'Accumulo 4',
-      value: 4,
-      price: 300,
-    },
-    {
-      label: 'Accumulo 5',
-      value: 5,
-      price: 700,
-    },
-    {
-      label: 'Accumulo 6',
-      value: 6,
-      price: 100,
+      capacity: 14,
+      price: 1000,
     },
   ];
   const eolic_types = [
     {
-      label: 'Eolico 1',
+      label: 'Domus',
       value: 1,
-      price: 300,
+      power: 1,
+      price: 920,
     },
     {
-      label: 'Eolico 2',
+      label: 'Eolo 2000',
       value: 2,
-      price: 700,
-    },
-    {
-      label: 'Eolico 3',
-      value: 3,
-      price: 100,
-    },
-    {
-      label: 'Eolico 4',
-      value: 4,
-      price: 300,
-    },
-    {
-      label: 'Eolico 5',
-      value: 5,
-      price: 700,
-    },
-    {
-      label: 'Eolico 6',
-      value: 6,
-      price: 100,
+      power: 2,
+      price: 1500,
     },
   ];
 
   const [systemType, setSystemType] = useState('');
+  const [pvType, setPvType] = useState('');
   const [inverterType, setInverterType] = useState('');
   const [batteryType, setBatteryType] = useState('');
   const [eolicType, setEolicType] = useState('');
@@ -186,24 +143,44 @@ export default function SystemInfo({ formStep, nextFormStep }) {
         </div>
 
         {(systemType === 1 || systemType === 2 || systemType === 3) && (
-          <div class="mb-8">
-            <div className="flex overflow-x-auto">
-              {inverter_types.map((inverter) => {
-                return (
-                  <div
-                    key={inverter.label}
-                    onClick={() => setInverterType(inverter.value)}
-                    className={`cursor-pointer flex items-center text-center border-4 mr-4 p-4 max-w-50 ${
-                      inverterType === inverter.value ? 'border-cyan-400' : 'border-black'
-                    }`}
-                  >
-                    {inverter.label}
-                  </div>
-                );
-              })}
+          <>
+            <div class="mb-8">
+              <div className="flex overflow-x-auto">
+                {pv_types.map((pv) => {
+                  return (
+                    <div
+                      key={pv.label}
+                      onClick={() => setPvType(pv.value)}
+                      className={`cursor-pointer flex items-center text-center border-4 mr-4 p-4 max-w-50 ${
+                        pvType === pv.value ? 'border-cyan-400' : 'border-black'
+                      }`}
+                    >
+                      {pv.label}
+                    </div>
+                  );
+                })}
+              </div>
+              {pvType && <div>Prezzo: {pv_types.find((x) => x.value === pvType).price}</div>}
             </div>
-            {inverterType && <div>Prezzo: {inverter_types.find((x) => x.value === inverterType).price}</div>}
-          </div>
+            <div class="mb-8">
+              <div className="flex overflow-x-auto">
+                {inverter_types.map((inverter) => {
+                  return (
+                    <div
+                      key={inverter.label}
+                      onClick={() => setInverterType(inverter.value)}
+                      className={`cursor-pointer flex items-center text-center border-4 mr-4 p-4 max-w-50 ${
+                        inverterType === inverter.value ? 'border-cyan-400' : 'border-black'
+                      }`}
+                    >
+                      {inverter.label}
+                    </div>
+                  );
+                })}
+              </div>
+              {inverterType && <div>Prezzo: {inverter_types.find((x) => x.value === inverterType).price}</div>}
+            </div>
+          </>
         )}
 
         {(systemType === 2 || systemType === 3) && (
